@@ -1,0 +1,237 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="icon" type="image/png" href="{% static 'image/favicon.ico' %}"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<header class="header">
+
+    <div class="header-1">
+        
+        <a href="#" class="logo"> <i class="fas fa-book"></i> पुस्तक पाठक </a>
+
+        <form action="" class="search-form">
+            <input type="search" name="" placeholder="search here... " id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+       <div class="icons">
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="/en"><span><img src="{% static 'image/gt.svg' %}" style="width: 32px;height: 32px;position: relative;right:5px;top: 5px;">Eng</span></a>
+        
+            
+            <a id="user">नमस्कार {{user.first_name}}</a>
+           
+            <div id="login-btn" onclick="location.href='/logout'" class="fas fa-user-alt-slash"></div>
+        </div>
+
+    </div>
+
+    <div class="header-2">
+        <nav class="navbar">
+           
+            <a href="#home">मुख्य</a>
+            <a href="#featured">विशेष पुस्तकें</a>
+            <a href="#arrivals">नयी पुस्तकें</a>
+           
+          
+            </nav>
+    </div>
+
+</header>
+
+<nav class="bottom-navbar">
+    <a href="#home" class="fas fa-home"></a>
+    <a href="#featured" class="fas fa-list"></a>
+    <a href="#arrivals" class="fas fa-tags"></a>
+    </nav>
+
+<section class="home" id="home">
+
+    <div class="row">
+
+
+        <div class="content">
+
+            
+            <h3>पुस्तक</h3>
+            <p>पुस्तकें जो मैं नई भाषाएँं सीखने में उपयोग करता हूँ ,
+            मैं ये पुस्तकें मेरे भिन्न प्रकार की भाषाओं को सीखने के लक्ष्य हेतु उपयोग करता आ रहा हूँ।</p>
+            <a href="#" class="btn">खाेजें</a>
+           
+        </div>
+
+        <div class="swiper books-slider">
+            <div class="swiper-wrapper">
+
+                {% for b in books %}
+                <a href="#" class="swiper-slide"><img src="{{b.img.url}}" alt=""></a>
+                {% endfor %}
+            </div>
+            <img src="{% static 'image/stand.png' %}" class="stand" alt="">
+        </div>
+
+    </div>
+
+</section>
+
+<section class="featured" id="featured">
+    
+    <h1 class="heading"> <span>विशेष पुस्तकें</span> </h1>
+   
+    <div class="swiper featured-slider">
+
+
+        <div class="swiper-wrapper">
+
+            {% for b in books %}
+
+            <div class="swiper-slide box">
+                <div class="icons">
+                    <a href="#" class="fas fa-search"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-eye"></a>
+                </div>
+                <div class="image">
+                    <img src="{{b.img.url}}" alt="">
+                </div>
+                <div class="content">
+                   
+                    <a href="{{b.url}}" class="btn">पढ़ें</a>
+                   
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<section class="newsletter">
+
+    <form action="">
+        <div class="parent">
+        <div class="child"><h3 id="greet">{{greet}} {{user.first_name}}</h3></div><div class="child"><img src="static/image/heart.png
+            " width="30px"></div>
+        </div>
+    </form>
+
+</section>
+
+<section class="arrivals" id="arrivals">
+    
+    <h1 class="heading"> <span>नयीं पुस्तकें</span> </h1>
+    
+    <div class="swiper arrivals-slider">
+
+        <div class="swiper-wrapper">
+
+            {% for b in books %}
+
+            <a href="#" class="swiper-slide box">
+                <div class="image">
+                    <img src="{{b.img.url}}" alt="">
+                </div>
+                <div class="content">
+                    
+                    <h3>नयीं पुस्तकें</h3>
+                    
+
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="swiper arrivals-slider">
+
+        <div class="swiper-wrapper">
+
+            {% for b in books %}
+
+            <a href="#" class="swiper-slide box">
+                <div class="image">
+                    <img src="{{b.img.url}}" alt="">
+                </div>
+                <div class="content">
+                    
+                    <h3>नयीं पुस्तकें</h3>
+                    
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="footer">
+
+
+    <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-twitter"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+        <a href="#" class="fab fa-pinterest"></a>
+    </div>
+
+    
+    <div class="credit"> निर्माता <span>श्री आर.जे.किंग</span> | सर्वाधिकार सुरक्षित</div>
+   
+</section>
+
+<img id="hide" style="display: none">
+
+<div class="loader-container">
+    <img src="{% static 'image/loader-img.gif' %}" alt="">
+</div>
+
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}
+
